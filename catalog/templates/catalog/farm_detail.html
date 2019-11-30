@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Farm: {{ farm.farm_name }}</h1>
+
+  <p><strong>Country:</strong> {{ farm.localgovt.state.country.country_name }}</p>
+  <p><strong>State:</strong> {{ farm.localgovt.state.state_name }}</p>
+  <p><strong>Local Government/Province:</strong> {{ farm.localgovt }}</p> 
+  <p><strong>Telephone 1 & 2:</strong> {{ farm.telephone1 }} / {{ farm.telephone2 }}</p>  
+  <p><strong>Email Address:</strong> {{ farm.enailAddress }}</p>  
+  <p><strong>Farm Description:</strong> {{ farm.description }}</p>
+
+  <p><strong>Products:</strong> <a href="">{{ farm.farm_name }}</a></p>  <!--author detail link not yet defined ProduceStore. -->
+
+   <div style="margin-left:20px;margin-top:20px">
+    <h4>Farm Produce</h4>
+    <!-- <hr> -->
+
+    
+    <table class="table-bordered">
+        <tr>
+            <th>Crop</th>
+            <th>Crop Type</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+        </tr>             
+    {% for product in farm.producestore_set.all %}
+        <tr>
+            <td>{{ product.cropclass.class_name }}</td>
+            <td>{{ product.cropsubclass.subclass_name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.rate }}</td>
+        </tr>  
+      <!-- <p class="text-muted"><strong>Id:</strong> {{ product.id }}</p> -->
+    {% endfor %}
+    </table>
+  </div>
+  <br>
+{% endblock %}

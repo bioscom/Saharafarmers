@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Farm List</h1>
+  {% if farm_list %}
+  <ul>
+    {% for farm in farm_list %}
+      <li>
+        <a href="{{ farm.get_absolute_url }}">{{ farm.farm_name }}</a> ({{farm.farm_name}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No farm found in the database.</p>
+  {% endif %}       
+{% endblock %}

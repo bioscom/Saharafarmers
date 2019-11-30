@@ -1,0 +1,18 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author: {{ author.first_name }} , {{ author.last_name }}</h1>
+  {{author.date_of_birth}} - {{author.date_of_death}}
+
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Books</h4>
+
+    {% for c in book.author_set.all %}
+      <hr>
+      <!-- <p><strong></strong><a href="{{ book.get_absolute_url }}">{{ copy.title }}</a></strong></p> ({{copy.bookinstance.count}}) -->
+      <p><strong></strong><a href="{{ book.get_absolute_url }}">{{ c.title }}</a></strong></p>
+      <p>{{ c.summary }}</p>
+    {% endfor %}
+  </div>
+{% endblock %}
